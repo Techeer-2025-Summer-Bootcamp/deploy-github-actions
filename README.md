@@ -1,1 +1,2 @@
-# deploy-github-actions
+# 깃허브 액션즈로 배포 해보기
+- 이 레포는 깃허브 액션즈로 Express를 배포 해보는 실습입니다
