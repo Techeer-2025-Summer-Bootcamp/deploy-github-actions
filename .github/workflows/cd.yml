@@ -1,0 +1,26 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Echo Deploy Message
+        run: echo "서비스 배포중..."
+      - name: Copy docker-compose.yml
+        id: copy
+        uses: appleboy/ssh-action@0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          source: docker-compose.yml
+          target: /home/whysano517/
+      # - name: Deploy to Server
+      #   uses: appleboy/ssh-action@0.1.1

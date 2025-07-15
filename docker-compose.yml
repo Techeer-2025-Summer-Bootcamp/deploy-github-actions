@@ -1,0 +1,16 @@
+services:
+  # Node.js Application
+  nodejs:
+    image: teami2022/session-node:1
+    ports:
+      - "3000:3000"
+    networks:
+      - cicd-network
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+
+networks:
+  cicd-network:
+    driver: bridge
+
