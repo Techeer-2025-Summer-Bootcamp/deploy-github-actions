@@ -15,7 +15,7 @@ jobs:
         run: echo "서비스 배포중..."
       - name: Copy docker-compose.yml
         id: copy
-        uses: appleboy/ssh-action@0.1.7
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
