@@ -30,9 +30,9 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /home/whysano517
-            docker-compose down
-            docker-compose pull
-            docker-compose up -d
+            docker compose down
+            docker compose pull
+            docker compose up -d
       
       # - name: Clean up files
       #   uses: appleboy/ssh-action@master
