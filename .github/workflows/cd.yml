@@ -22,5 +22,24 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           source: docker-compose.yml
           target: /home/whysano517/
-      # - name: Deploy to Server
-      #   uses: appleboy/ssh-action@0.1.1
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /home/whysano517
+            docker-compose down
+            docker-compose pull
+            docker-compose up -d
+      
+      # - name: Clean up files
+      #   uses: appleboy/ssh-action@master
+      #   with:
+      #     host: ${{ secrets.SSH_HOST }}
+      #     username: ${{ secrets.SSH_USERNAME }}
+      #     key: ${{ secrets.SSH_KEY }}
+      #     script: |
+      #       cd /home/whysano517
+      #       rm docker-compose.yml
